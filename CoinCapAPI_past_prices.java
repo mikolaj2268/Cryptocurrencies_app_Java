@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class CoinCapAPI_past_prices {
     public static void main(String[] args) throws IOException {
-        String apiUrl = "https://api.coincap.io/v2/assets?limit=2"; // API endpoint for top 2 cryptocurrencies
+        String apiUrl = "https://api.coincap.io/v2/assets?limit=2"; // link do API
 
         URL url = new URL(apiUrl);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -22,8 +22,7 @@ public class CoinCapAPI_past_prices {
         String apiResponse = in.lines().collect(Collectors.joining());
         in.close();
 
-        // Parse the API response to get the cryptocurrency IDs
-        // Note: This assumes that the API response is in JSON format and uses a JSON library to parse the response
+        // Sciaganie danych API
         JSONObject json = new JSONObject(apiResponse);
         JSONArray data = json.getJSONArray("data");
         List<String> cryptocurrencyIds = new ArrayList<>();
@@ -31,9 +30,9 @@ public class CoinCapAPI_past_prices {
             cryptocurrencyIds.add(data.getJSONObject(i).getString("id"));
         }
 
-        // Get the past prices for each cryptocurrency
+        // Ceny dla poszczegolnych kryptowalut
         for (String id : cryptocurrencyIds) {
-            apiUrl = "https://api.coincap.io/v2/assets/" + id + "/history?interval=d1"; // API endpoint for past prices with a 1 day interval
+            apiUrl = "https://api.coincap.io/v2/assets/" + id + "/history?interval=d1"; // Interwal 1 dzien
 
             url = new URL(apiUrl);
             con = (HttpURLConnection) url.openConnection();
