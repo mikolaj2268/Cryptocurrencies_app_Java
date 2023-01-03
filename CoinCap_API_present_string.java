@@ -7,7 +7,7 @@ public class CoinCap_API_present_string {
         try {
             String apiKey = "ed845cd1-cd07-4a69-8d2a-1eafd6eff344";
             Unirest.setTimeouts(0, 0);
-            HttpResponse<String> response = Unirest.get("https://api.coincap.io/v2/assets/bitcoin")
+            HttpResponse<String> response = Unirest.get("https://api.coincap.io/v2/rates/bitcoin")
                     .asString();
 
             // Print status code and body of the response
