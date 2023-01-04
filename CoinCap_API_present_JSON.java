@@ -3,6 +3,9 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class CoinCap_API_present_JSON {
     public static void main(String[] args) {
         try {
@@ -17,6 +20,8 @@ public class CoinCap_API_present_JSON {
         } catch (UnirestException e) {
             e.printStackTrace();
         }
+
+
     }
 }
 
