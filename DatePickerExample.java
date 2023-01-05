@@ -27,7 +27,7 @@ public class DatePickerExample {
     public static void main(String[] args) {
         JFrame frame = new JFrame("CryptoCurrency.com");
         frame.setLayout(new FlowLayout());
-        frame.setSize(300, 200);
+        frame.setSize(900, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create the "Choose Date" button
