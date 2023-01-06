@@ -1,29 +1,22 @@
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Properties;
-import java.text.SimpleDateFormat;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import net.sourceforge.jdatepicker.AbstractDateModel;
-import net.sourceforge.jdatepicker.DateModel;
-import net.sourceforge.jdatepicker.JDateComponent;
-import net.sourceforge.jdatepicker.JDateComponentFactory;
-import net.sourceforge.jdatepicker.JDatePanel;
-import net.sourceforge.jdatepicker.JDatePicker;
-import net.sourceforge.jdatepicker.graphics.JNextIcon;
-import net.sourceforge.jdatepicker.graphics.JPreviousIcon;
-import net.sourceforge.jdatepicker.impl.DateComponentFormatter;
-import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
-import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
-import net.sourceforge.jdatepicker.impl.SqlDateModel;
-import net.sourceforge.jdatepicker.impl.UtilCalendarModel;
-import net.sourceforge.jdatepicker.impl.UtilDateModel;
-import net.sourceforge.jdatepicker.util.JDatePickerUtil;
+
 public class MyGUI {
     public static void main(String[] args) {
+        String currCrypto = "BTC";
         // Create the frame
         JFrame frame = new JFrame("CryptoCurrency.com");
         frame.setLayout(new FlowLayout());
@@ -42,13 +35,14 @@ public class MyGUI {
         DateButton date2 = new DateButton("To date:");
         leftPanel.add(date2);
         // Create the right panel with the graph
-        JPanel rightPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Draw the graph here using g.drawLine(), etc.
-            }
-        };
+        JPanel rightPanel = new JPanel();
+        // create graph
+
+        LineChartExample graph1 = new LineChartExample("01.01.2002", "01.01.2020", currCrypto);
+        rightPanel.setLayout(new BorderLayout());
+        rightPanel.add(graph1.panel, BorderLayout.CENTER);
+        rightPanel.validate();
+
 
 
         // Create the "show" button
@@ -62,6 +56,12 @@ public class MyGUI {
                 System.out.println(date1.getDate());
                 System.out.println(("TO DATE"));
                 System.out.println(date2.getDate());
+                rightPanel.removeAll();
+                rightPanel.revalidate();
+                LineChartExample graph2 = new LineChartExample(date1.getDate(), date2.getDate(), "ETHERUM");
+                rightPanel.setLayout(new BorderLayout());
+                rightPanel.add(graph2.panel, BorderLayout.CENTER);
+                rightPanel.validate();
             }
         });
 
