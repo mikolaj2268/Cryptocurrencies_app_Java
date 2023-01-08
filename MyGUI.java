@@ -1,22 +1,51 @@
-
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
+import java.io.FileReader;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
+import java.io.IOException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class MyGUI {
     public static void main(String[] args) {
         String currCrypto = "BTC";
+        ArrayList dates = new ArrayList<Date>();
+        ArrayList prices = new ArrayList<String>();
+        try {
+            Object obj = new JSONParser().parse(new FileReader("response.json"));
+            JSONObject jo = (JSONObject) obj;
+            ArrayList data = (ArrayList) jo.get("data");
+            System.out.println(data);
+            SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+
+            for (Object innerObj : data) {
+                JSONObject innerObjPar = (JSONObject) innerObj;
+                String date = ((String) innerObjPar.get("date")).substring(0,10);
+                Date dateParsed = sdformat.parse(date);
+                dates.add(dateParsed);
+
+                String price = (String) innerObjPar.get("priceUsd");
+                price = price.substring(0, price.indexOf(".")+2);
+                prices.add(price);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+
+
         // Create the frame
         JFrame frame = new JFrame("CryptoCurrency.com");
         frame.setLayout(new FlowLayout());
@@ -38,7 +67,7 @@ public class MyGUI {
         JPanel rightPanel = new JPanel();
         // create graph
 
-        LineChartExample graph1 = new LineChartExample("01.01.2002", "01.01.2020", currCrypto);
+        LineChartExample graph1 = new LineChartExample("2002-01-01", "2023-01-01", currCrypto, dates, prices);
         rightPanel.setLayout(new BorderLayout());
         rightPanel.add(graph1.panel, BorderLayout.CENTER);
         rightPanel.validate();
@@ -58,7 +87,7 @@ public class MyGUI {
                 System.out.println(date2.getDate());
                 rightPanel.removeAll();
                 rightPanel.revalidate();
-                LineChartExample graph2 = new LineChartExample(date1.getDate(), date2.getDate(), "ETHERUM");
+                LineChartExample graph2 = new LineChartExample(date1.getDate(), date2.getDate(), "BTC", dates, prices);
                 rightPanel.setLayout(new BorderLayout());
                 rightPanel.add(graph2.panel, BorderLayout.CENTER);
                 rightPanel.validate();
