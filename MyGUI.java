@@ -55,10 +55,14 @@ public class MyGUI {
         // Create the left panel with buttons
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-        leftPanel.add(new StringButton("Bitcoin"));
-        leftPanel.add(new StringButton("Etherum"));
-        leftPanel.add(new StringButton("Tether"));
-        leftPanel.add(new StringButton("Solana"));
+        StringButton s1 = new StringButton("Bitcoin");
+        leftPanel.add(s1);
+        StringButton s2 = new StringButton("Etherum");
+        leftPanel.add(s2);
+        StringButton s3 = new StringButton("Tether");
+        leftPanel.add(s3);
+        StringButton s4 = new StringButton("Solana");
+        leftPanel.add(s4);
         DateButton date1 = new DateButton("From date:");
         leftPanel.add(date1);
         DateButton date2 = new DateButton("To date:");
@@ -91,6 +95,9 @@ public class MyGUI {
                 rightPanel.setLayout(new BorderLayout());
                 rightPanel.add(graph2.panel, BorderLayout.CENTER);
                 rightPanel.validate();
+                int size = s1.cryptoList.size();
+                String CryptoForGraph = s1.cryptoList.get(size - 1);
+                System.out.println(CryptoForGraph); //to jest ostatnia kliknieta kryptowaluta
             }
         });
 
