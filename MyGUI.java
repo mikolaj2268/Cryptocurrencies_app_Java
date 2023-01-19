@@ -16,7 +16,9 @@ import javax.swing.JFrame;
 
 public class MyGUI {
     public static void main(String[] args) {
-        String currCrypto = "BTC";
+        final String[] currCrypto = {"BTC"};
+
+
         ArrayList dates = new ArrayList<Date>();
         ArrayList prices = new ArrayList<String>();
         try {
@@ -55,10 +57,14 @@ public class MyGUI {
         // Create the left panel with buttons
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-        leftPanel.add(new StringButton("Bitcoin"));
-        leftPanel.add(new StringButton("Etherum"));
-        leftPanel.add(new StringButton("Tether"));
-        leftPanel.add(new StringButton("Solana"));
+        StringButton s1 = new StringButton("Bitcoin");
+        leftPanel.add(s1);
+        StringButton s2 = new StringButton("Etherum");
+        leftPanel.add(s2);
+        StringButton s3 = new StringButton("Tether");
+        leftPanel.add(s3);
+        StringButton s4 = new StringButton("Solana");
+        leftPanel.add(s4);
         DateButton date1 = new DateButton("From date:");
         leftPanel.add(date1);
         DateButton date2 = new DateButton("To date:");
@@ -67,13 +73,36 @@ public class MyGUI {
         JPanel rightPanel = new JPanel();
         // create graph
 
-        LineChartExample graph1 = new LineChartExample("2002-01-01", "2023-01-01", currCrypto, dates, prices);
+        LineChartExample graph1 = new LineChartExample("2002-01-01", "2023-01-01", currCrypto[0], dates, prices);
         rightPanel.setLayout(new BorderLayout());
         rightPanel.add(graph1.panel, BorderLayout.CENTER);
         rightPanel.validate();
 
+        s1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currCrypto[0] = "BTC";
+            }
+        });
+        s2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currCrypto[0] = "Etherum";
 
-
+            }
+        });
+        s3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currCrypto[0] = "Tether";
+            }
+        });
+        s4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currCrypto[0] = "Solana";
+            }
+        });
         // Create the "show" button
         JButton showButton = new JButton("Show");
         showButton.addActionListener(new ActionListener() {

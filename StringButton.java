@@ -1,10 +1,12 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class StringButton extends JButton {
     private String str;
-
+    public static String crypto;
     public StringButton(String str) {
         super(str);
         this.str = str;
@@ -17,10 +19,11 @@ public class StringButton extends JButton {
     }
 
     public void onClick() {
-        System.out.println(str);
+        crypto = str;
+
     }
 
-    public String getString() {
-        return str;
-    }
+//    public String getString() {
+//        return crypto;
+//    }
 }
