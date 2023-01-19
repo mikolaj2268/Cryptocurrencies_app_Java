@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 public class StringButton extends JButton {
     private String str;
 
+
     public StringButton(String str) {
         super(str);
         this.str = str;
