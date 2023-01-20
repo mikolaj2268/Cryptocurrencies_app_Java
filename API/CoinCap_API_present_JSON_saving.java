@@ -1,3 +1,5 @@
+package API;
+
 import org.json.JSONObject;
 
 import java.io.FileWriter;
@@ -22,7 +24,7 @@ public class CoinCap_API_present_JSON_saving {
             JSONObject obj = response.getBody().getObject();
 
             // Write the object to a file
-            try (FileWriter file = new FileWriter("response.json")) {
+            try (FileWriter file = new FileWriter("API/response.json")) {
                 file.write(obj.toString());
                 System.out.println("Successfully saved JSON object to file");
             } catch (IOException e) {
