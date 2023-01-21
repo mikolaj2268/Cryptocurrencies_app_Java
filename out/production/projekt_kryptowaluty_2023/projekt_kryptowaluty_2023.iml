@@ -7,18 +7,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="json-simple-1.1" level="project" />
-    <orderEntry type="library" name="jfreechart-1.5.3" level="project" />
-    <orderEntry type="library" name="jdatepicker-2.0.3" level="project" />
-    <orderEntry type="library" name="LGoodDatePicker-11.2.1" level="project" />
-    <orderEntry type="library" name="json-20220924-javadoc" level="project" />
     <orderEntry type="library" name="formdev.flatlaf" level="project" />
-    <orderEntry type="library" name="flatlaf-3.0" level="project" />
+    <orderEntry type="library" name="commons-codec-1.91" level="project" />
+    <orderEntry type="library" name="commons-codec-1.9" level="project" />
+    <orderEntry type="library" name="jdatepicker-2.0.3" level="project" />
+    <orderEntry type="library" name="jfreechart-1.5.31" level="project" />
+    <orderEntry type="library" name="jfreechart-1.5.3" level="project" />
+    <orderEntry type="library" name="json-simple-1.1" level="project" />
+    <orderEntry type="library" name="LGoodDatePicker-11.2.1" level="project" />
     <orderEntry type="library" name="json-20220924" level="project" />
-    <orderEntry type="library" name="projekt_kryptowaluty_20233" level="project" />
-    <orderEntry type="library" name="projekt_kryptowaluty_20234" level="project" />
-    <orderEntry type="library" name="jcommon-0.8.3" level="project" />
-    <orderEntry type="library" name="jcommon-1.0.8" level="project" />
-    <orderEntry type="library" name="jcommon-1.0.23" level="project" />
   </component>
 </module>
