@@ -1,4 +1,5 @@
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ import javax.swing.JFrame;
 
 public class MyGUI {
     public static void main(String[] args) {
-        try {UIManager.setLookAndFeel( new FlatDarkLaf() );}
+        try {UIManager.setLookAndFeel( new FlatLightLaf() );}
         catch( Exception e ) { e.printStackTrace();}
         String currCrypto = "bitcoin";
         FileReaderJ readerJ = new FileReaderJ();

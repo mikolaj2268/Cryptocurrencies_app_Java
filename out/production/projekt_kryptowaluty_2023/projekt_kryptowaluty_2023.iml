@@ -13,5 +13,6 @@
     <orderEntry type="library" name="LGoodDatePicker-11.2.1" level="project" />
     <orderEntry type="library" name="json-20220924-javadoc" level="project" />
     <orderEntry type="library" name="json-20220924" level="project" />
+    <orderEntry type="library" name="formdev.flatlaf" level="project" />
   </component>
 </module>
