@@ -1,21 +1,27 @@
-import java.io.FileReader;
-import java.util.ArrayList;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class FileRader {
-    public static void main(String[] args) {
+public class FileReaderJ {
+    private HashMap<String, ArrayList<Date>> graphDates;
+    private HashMap<String, ArrayList<String>> graphPrices;
+
+    public FileReaderJ() {
+        graphDates = new HashMap<>();
+        graphPrices = new HashMap<>();
+    }
+
+    public void readFile(String fileName){
         try {
-            Object obj = new JSONParser().parse(new FileReader("response.json"));
+            Object obj = new JSONParser().parse(new java.io.FileReader(fileName));
             JSONObject jo = (JSONObject) obj;
             ArrayList<JSONObject> data = (ArrayList) jo.get("data");
-            System.out.println(data.get(0));
-            HashMap<String, List<Object>> graphDates = new HashMap<>();
-            HashMap<String, List<Object>> graphPrices = new HashMap<>();
 
             String last = "";
             ArrayList dates = new ArrayList<Date>();
@@ -24,32 +30,35 @@ public class FileRader {
             for (JSONObject innerObj : data) {
                 if(!last.equals((String) innerObj.get("assetName"))){
                     if(!last.equals("")){
-                        //System.out.println(last);
-                        graphDates.put((String) innerObj.get("assetName"), dates);
-                        graphPrices.put((String) innerObj.get("assetName"), prices);
+                        System.out.println(last);
+                        this.graphDates.put((String) innerObj.get("assetName"), dates);
+                        this.graphPrices.put((String) innerObj.get("assetName"), prices);
                     }
                     dates = new ArrayList<Date>();
                     prices = new ArrayList<String>();
                 }
                 last = (String) innerObj.get("assetName");
-                //System.out.println(last);
 
                 String date = ((String) innerObj.get("date")).substring(0,10);
                 dates.add(date);
-                //System.out.println(date);
 
                 String price = (String) innerObj.get("priceUsd");
                 price = price.substring(0, price.indexOf(".")+4);
                 prices.add(price);
-                //System.out.println(price);
             }
-            System.out.println(graphPrices.get("bitcoin"));
-            System.out.println(graphDates.get("bitcoin"));
 
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public HashMap<String, ArrayList<Date>> getGraphDates() {
+        return graphDates;
+    }
+
+    public HashMap<String, ArrayList<String>> getGraphPrices() {
+        return graphPrices;
     }
 }
