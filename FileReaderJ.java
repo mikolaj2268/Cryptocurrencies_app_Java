@@ -3,6 +3,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -26,21 +27,28 @@ public class FileReaderJ {
             String last = "";
             ArrayList dates = new ArrayList<Date>();
             ArrayList prices = new ArrayList<String>();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
-            for (JSONObject innerObj : data) {
-                if(!last.equals((String) innerObj.get("assetName"))){
+            for (int i = 0; i < data.size(); i++) {
+                JSONObject innerObj = data.get(i);
+                if(!last.equals((String) innerObj.get("assetName")) || i == (data.size()-1)){
                     if(!last.equals("")){
                         System.out.println(last);
-                        this.graphDates.put((String) innerObj.get("assetName"), dates);
-                        this.graphPrices.put((String) innerObj.get("assetName"), prices);
+                        this.graphDates.put(last, dates);
+                        this.graphPrices.put(last, prices);
                     }
                     dates = new ArrayList<Date>();
                     prices = new ArrayList<String>();
                 }
                 last = (String) innerObj.get("assetName");
+                if(last.equals("solana")){
+                    System.out.println("JEST");
+                }
 
                 String date = ((String) innerObj.get("date")).substring(0,10);
-                dates.add(date);
+                Date dateF = df.parse(date);
+                dates.add(dateF);
+
 
                 String price = (String) innerObj.get("priceUsd");
                 price = price.substring(0, price.indexOf(".")+4);
@@ -50,6 +58,8 @@ public class FileReaderJ {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (java.text.ParseException e) {
             e.printStackTrace();
         }
     }

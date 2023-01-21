@@ -31,7 +31,7 @@ public class MyGUI {
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         StringButton s1 = new StringButton("Bitcoin");
         leftPanel.add(s1);
-        StringButton s2 = new StringButton("Etherum");
+        StringButton s2 = new StringButton("Ethereum");
         leftPanel.add(s2);
         StringButton s3 = new StringButton("Tether");
         leftPanel.add(s3);
@@ -69,9 +69,11 @@ public class MyGUI {
                 System.out.println(date2.getDate());
                 rightPanel.removeAll();
                 rightPanel.revalidate();
-                //LineChart graph2 = new LineChart(date1.getDate(), date2.getDate(), currCrypto, graphDates.get(currCrypto),graphPrices.get(currCrypto));
+                System.out.println(currCrypto + "TO JEST OSTATNIA KRYPTO");
+                System.out.println(graphDates.get(currCrypto));
+                LineChart graph2 = new LineChart(date1.getDate(), date2.getDate(), currCrypto, graphDates.get(currCrypto),graphPrices.get(currCrypto));
                 rightPanel.setLayout(new BorderLayout());
-                //rightPanel.add(graph2.panel, BorderLayout.CENTER);
+                rightPanel.add(graph2.panel, BorderLayout.CENTER);
                 rightPanel.validate();
             }
         });

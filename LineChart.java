@@ -4,6 +4,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.awt.*;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,7 +34,8 @@ public class LineChart {
     }
 
     private DefaultCategoryDataset createDataset(String name, String startDate, String endDate){
-        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+
         Date startDateP = null;
         Date endDateP = null;
         try {
@@ -46,16 +48,12 @@ public class LineChart {
         String series1 = name;
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        String strDate = sdformat.format(dates.get(0));
-        //System.out.println(startDateP.getClass());
-        //System.out.println((String) dates.get(0));
-        //for (int i = 0; i < dates.size(); i++) {
-          //  System.out.println(dates.get(i).compareTo(startDateP)>0);
+        for (int i = 0; i < dates.size(); i++) {
 
-//            if(dates.get(i).compareTo(startDate1)>0 & endDate1.compareTo(dates.get(i))>0) {
-//                dataset.addValue(Float.valueOf(prices.get(i)), series1, dates.get(i));
-//            }
-        //}
+            if(dates.get(i).compareTo(startDateP)>0 & endDateP.compareTo(dates.get(i))>0) {
+                dataset.addValue(Float.valueOf(prices.get(i)), series1, dates.get(i));
+            }
+        }
         return dataset;
     }
 

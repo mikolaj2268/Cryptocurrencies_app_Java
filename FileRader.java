@@ -1,4 +1,6 @@
 import java.io.FileReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
@@ -20,6 +22,7 @@ public class FileRader {
             String last = "";
             ArrayList dates = new ArrayList<Date>();
             ArrayList prices = new ArrayList<String>();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
             for (JSONObject innerObj : data) {
                 if(!last.equals((String) innerObj.get("assetName"))){
@@ -35,8 +38,10 @@ public class FileRader {
                 //System.out.println(last);
 
                 String date = ((String) innerObj.get("date")).substring(0,10);
-                dates.add(date);
-                //System.out.println(date);
+                Date dateF = df.parse(date);
+                dates.add(dateF);
+
+                System.out.println(dateF.getClass());
 
                 String price = (String) innerObj.get("priceUsd");
                 price = price.substring(0, price.indexOf(".")+4);
@@ -49,6 +54,8 @@ public class FileRader {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (java.text.ParseException e) {
             e.printStackTrace();
         }
     }
