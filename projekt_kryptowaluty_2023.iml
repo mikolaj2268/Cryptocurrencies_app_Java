@@ -7,11 +7,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jackson-databind-2.14.1" level="project" />
+    <orderEntry type="library" name="projekt_kryptowaluty_2023" level="project" />
+    <orderEntry type="library" name="projekt_kryptowaluty_20231" level="project" />
+    <orderEntry type="library" name="projekt_kryptowaluty_20232" level="project" />
+    <orderEntry type="library" name="commons-codec-1.6" level="project" />
     <orderEntry type="library" name="json-simple-1.1" level="project" />
-    <orderEntry type="library" name="jfreechart-1.5.3" level="project" />
-    <orderEntry type="library" name="jdatepicker-2.0.3" level="project" />
-    <orderEntry type="library" name="LGoodDatePicker-11.2.1" level="project" />
-    <orderEntry type="library" name="json-20220924-javadoc" level="project" />
-    <orderEntry type="library" name="json-20220924" level="project" />
+    <orderEntry type="library" name="jfreechart" level="project" />
   </component>
 </module>
