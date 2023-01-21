@@ -1,3 +1,5 @@
+import com.formdev.flatlaf.FlatDarkLaf;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.FlowLayout;
@@ -12,6 +14,8 @@ import javax.swing.JFrame;
 
 public class MyGUI {
     public static void main(String[] args) {
+        try {UIManager.setLookAndFeel( new FlatDarkLaf() );}
+        catch( Exception e ) { e.printStackTrace();}
         String currCrypto = "bitcoin";
         FileReaderJ readerJ = new FileReaderJ();
         readerJ.readFile("response.json");
