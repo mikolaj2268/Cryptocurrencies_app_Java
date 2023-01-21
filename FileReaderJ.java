@@ -33,7 +33,6 @@ public class FileReaderJ {
                 JSONObject innerObj = data.get(i);
                 if(!last.equals((String) innerObj.get("assetName")) || i == (data.size()-1)){
                     if(!last.equals("")){
-                        System.out.println(last);
                         this.graphDates.put(last, dates);
                         this.graphPrices.put(last, prices);
                     }
@@ -41,9 +40,6 @@ public class FileReaderJ {
                     prices = new ArrayList<String>();
                 }
                 last = (String) innerObj.get("assetName");
-                if(last.equals("solana")){
-                    System.out.println("JEST");
-                }
 
                 String date = ((String) innerObj.get("date")).substring(0,10);
                 Date dateF = df.parse(date);

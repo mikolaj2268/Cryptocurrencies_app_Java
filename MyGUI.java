@@ -62,15 +62,8 @@ public class MyGUI {
                 // You can use the getText() method to get the string from a button
                 int size = s1.cryptoList.size();
                 String currCrypto = (s1.cryptoList.get(size - 1)).toLowerCase();
-                System.out.println(currCrypto); //to jest ostatnia kliknieta kryptowaluta
-                System.out.println("FROM DATE:");
-                System.out.println(date1.getDate());
-                System.out.println(("TO DATE"));
-                System.out.println(date2.getDate());
                 rightPanel.removeAll();
                 rightPanel.revalidate();
-                System.out.println(currCrypto + "TO JEST OSTATNIA KRYPTO");
-                System.out.println(graphDates.get(currCrypto));
                 LineChart graph2 = new LineChart(date1.getDate(), date2.getDate(), currCrypto, graphDates.get(currCrypto),graphPrices.get(currCrypto));
                 rightPanel.setLayout(new BorderLayout());
                 rightPanel.add(graph2.panel, BorderLayout.CENTER);
