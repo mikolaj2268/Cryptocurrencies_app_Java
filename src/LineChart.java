@@ -1,6 +1,10 @@
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.Axis;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.Plot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
@@ -29,9 +33,19 @@ public class LineChart {
                 "USD$", // Y-Axis Label
                 dataset
         );
-        chart.setBackgroundPaint(Color.white);
+        chart.setBackgroundPaint(Color.black);
         chart.getPlot().setBackgroundPaint(Color.black);
+        chart.getTitle().setPaint(Color.white);
+        Plot plot = chart.getPlot();
+        setAxisFontColor(((CategoryPlot) plot).getDomainAxis(), Color.white);
+        setAxisFontColor(((CategoryPlot) plot).getRangeAxis(), Color.white);
+        
         this.panel = new ChartPanel(chart);
+    }
+
+    private void setAxisFontColor(Axis axis, Color fontColour) {
+            axis.setLabelPaint(fontColour);
+            axis.setTickLabelPaint(fontColour);
     }
 
     private DefaultCategoryDataset createDataset(String name, String startDate, String endDate){

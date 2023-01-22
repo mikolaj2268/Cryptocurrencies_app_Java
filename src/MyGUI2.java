@@ -34,6 +34,7 @@ public class MyGUI2 {
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         StringButton s1 = new StringButton("Bitcoin");
+
         s1.setBackground(Color.BLACK);
         s1.setForeground(Color.WHITE);
         s1.setFont(new Font("Arial", Font.BOLD, 20));
