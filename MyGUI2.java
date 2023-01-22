@@ -24,25 +24,48 @@ public class MyGUI2 {
         System.out.println(graphPrices.get(currCrypto));
         System.out.println(graphDates.get(currCrypto));
 
+        GridBagConstraints c = new GridBagConstraints();
+
+        // the weights the component should have in concern to them being added to a container that is larger
+        // than its preferred size
+        c.weightx = 0.5;
+        c.weighty = 0.5;
+
+        // the coordinates of the component
+        c.gridx = 0;
+        c.gridy = 0;
+
+        // the way the component should be "glued" to the container
+        c.anchor = GridBagConstraints.LINE_START;
+
+        // the way the component should expand in size if it is placed in a container that is larger
+        // than its preferred size
+        c.fill = GridBagConstraints.HORIZONTAL;
+
         // Create the frame
         JFrame frame = new JFrame("CryptoCurrency.com");
         frame.setLayout(new BorderLayout());
         frame.setSize(9000, 8000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        Dimension buttonSize = new Dimension(150, 30);
         // Create the left panel with buttons
-        JPanel leftPanel = new JPanel();
+        JPanel leftPanel = new JPanel(new GridBagLayout());
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         StringButton s1 = new StringButton("Bitcoin");
         s1.setBackground(Color.BLACK);
         s1.setForeground(Color.WHITE);
         s1.setFont(new Font("Arial", Font.BOLD, 20));
-        leftPanel.add(s1);
+        s1.setPreferredSize(buttonSize);
+        leftPanel.add(s1, c);
+
         StringButton s2 = new StringButton("Ethereum");
+        c.gridy = 1;
+        s2.setPreferredSize(buttonSize);
         s2.setBackground(Color.BLACK);
         s2.setForeground(Color.WHITE);
         s2.setFont(new Font("Arial", Font.BOLD, 20));
-        leftPanel.add(s2);
+        leftPanel.add(s2, c);
         StringButton s3 = new StringButton("Tether");
         s3.setBackground(Color.BLACK);
         s3.setForeground(Color.WHITE);
@@ -63,6 +86,10 @@ public class MyGUI2 {
         date2.setForeground(Color.WHITE);
         date2.setFont(new Font("Arial", Font.BOLD, 20));
         leftPanel.add(date2);
+
+
+
+
 
         // Create the right panel with the graph
         JPanel rightPanel = new JPanel();
@@ -91,9 +118,20 @@ public class MyGUI2 {
             }
         });
 
+        /*Dimension buttonSize = new Dimension(150, 30);*/
+        s1.setPreferredSize(buttonSize);
+        s2.setPreferredSize(buttonSize);
+        s3.setPreferredSize(buttonSize);
+        s4.setPreferredSize(buttonSize);
+        date1.setPreferredSize(buttonSize);
+        date2.setPreferredSize(buttonSize);
+        showButton.setPreferredSize(buttonSize);
+
+        leftPanel.add(showButton);
+
         // Add the panels and button to the frame
         frame.add(leftPanel, BorderLayout.WEST);
-        frame.add(showButton, BorderLayout.SOUTH);
+        /*frame.add(showButton, BorderLayout.WEST);*/
         frame.add(rightPanel, BorderLayout.CENTER);
 
         // Pack and display the frame
