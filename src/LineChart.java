@@ -3,6 +3,8 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.Axis;
 import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.CategoryLabelPositions;
+import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.Plot;
 import org.jfree.chart.plot.PlotOrientation;
@@ -10,6 +12,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.awt.*;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,6 +43,10 @@ public class LineChart {
         setAxisFontColor(((CategoryPlot) plot).getDomainAxis(), Color.white);
         setAxisFontColor(((CategoryPlot) plot).getRangeAxis(), Color.white);
         chart.removeLegend();
+        CategoryAxis domainAxis = ((CategoryPlot) plot).getDomainAxis();
+//        domainAxis.setCategoryLabelPositions(
+//                CategoryLabelPositions.createUpRotationLabelPositions(Math.PI / 4.0));
+
         this.panel = new ChartPanel(chart);
     }
 
