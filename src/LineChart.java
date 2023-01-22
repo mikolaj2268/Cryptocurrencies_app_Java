@@ -28,7 +28,7 @@ public class LineChart {
         DefaultCategoryDataset dataset = createDataset(name, startDate, endDate);
         // Create chart
         JFreeChart chart = ChartFactory.createLineChart(
-                name, // Chart title
+                name.toUpperCase(), // Chart title
                 "Date", // X-Axis Label
                 "USD$", // Y-Axis Label
                 dataset
@@ -39,7 +39,7 @@ public class LineChart {
         Plot plot = chart.getPlot();
         setAxisFontColor(((CategoryPlot) plot).getDomainAxis(), Color.white);
         setAxisFontColor(((CategoryPlot) plot).getRangeAxis(), Color.white);
-        
+        chart.removeLegend();
         this.panel = new ChartPanel(chart);
     }
 
