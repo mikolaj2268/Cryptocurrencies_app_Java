@@ -18,7 +18,7 @@ public class MyGUI2 {
         }
         String currCrypto = "bitcoin";
         FileReaderJ readerJ = new FileReaderJ();
-        readerJ.readFile("response.json");
+        readerJ.readFile("./API/final_response.json");
         HashMap<String, ArrayList<Date>> graphDates = readerJ.getGraphDates();
         HashMap<String, ArrayList<String>> graphPrices = readerJ.getGraphPrices();
         System.out.println(graphPrices.get(currCrypto));
