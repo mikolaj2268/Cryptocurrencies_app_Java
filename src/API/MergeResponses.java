@@ -13,11 +13,11 @@ import java.util.List;
 
 public class MergeResponses {
     public static void main(String[] args) {
-        // Create a list to store all of the responses
+        // Create a list to store all the responses
         List<JSONObject> responses = new ArrayList<>();
 
         // Define the file names
-        List<String> fileNames = Arrays.asList("API/solana.json", "API/ethereum.json", "API/bitcoin.json", "API/tether.json");
+        List<String> fileNames = Arrays.asList("solana.json", "ethereum.json", "bitcoin.json", "tether.json");
 
         for (String fileName : fileNames) {
             try {
@@ -42,7 +42,7 @@ public class MergeResponses {
         finalResponse.put("data", finalData);
 
         // Write the object to a file
-        try (FileWriter file = new FileWriter("API/final_response.json")) {
+        try (FileWriter file = new FileWriter("final_response.json")) {
             file.write(finalResponse.toString());
             System.out.println("Successfully saved final JSON object to file");
         } catch (IOException e) {

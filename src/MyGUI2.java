@@ -18,7 +18,7 @@ public class MyGUI2 {
         }
         String currCrypto = "bitcoin";
         FileReaderJ readerJ = new FileReaderJ();
-        readerJ.readFile("./API/final_response.json");
+        readerJ.readFile("./src/API/final_response.json");
         HashMap<String, ArrayList<Date>> graphDates = readerJ.getGraphDates();
         HashMap<String, ArrayList<String>> graphPrices = readerJ.getGraphPrices();
         System.out.println(graphPrices.get(currCrypto));
@@ -92,9 +92,9 @@ public class MyGUI2 {
             }
         });
 
+        leftPanel.add(showButton);
         // Add the panels and button to the frame
         frame.add(leftPanel, BorderLayout.WEST);
-        frame.add(showButton, BorderLayout.SOUTH);
         frame.add(rightPanel, BorderLayout.CENTER);
 
         // Pack and display the frame
