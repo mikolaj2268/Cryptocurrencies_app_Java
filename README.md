@@ -7,6 +7,6 @@ The Cryptocurrency App in Java is a simple but powerful application that allows 
   
 
 # Main Panel
-![]([https://github.com/mikolaj2268/Cryptocurrencies-app-Java/blob/main/Screenshots/Screenshot%202023-04-04%20215011.jpg)
-
 ![](https://github.com/mikolaj2268/Cryptocurrencies-app-Java/blob/main/Visualizations/Screenshot%202023-04-04%20215011.jpg)
+
+![](https://github.com/mikolaj2268/Cryptocurrencies-app-Java/blob/main/Visualizations/Screenshot%202023-04-04%20215052.jpg)
