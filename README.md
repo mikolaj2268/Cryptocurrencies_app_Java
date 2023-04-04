@@ -6,9 +6,9 @@ The Cryptocurrency App in Java is a simple but powerful application that allows 
 
 This project was created by:
 
--   Mikołaj Mróz
+-   Mikołaj Mróz(https://github.com/mikolaj2268)
 -   Michał Binda
--   Wojciech Michaluk
+-   Wojciech Michaluk(https://github.com/wojo501)
 
 It was a final project of university course.
 
