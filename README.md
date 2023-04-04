@@ -6,10 +6,12 @@ The Cryptocurrency App in Java is a simple but powerful application that allows 
 
 This project was created by:
 
-Wojciech Michaluk
-Mikołaj Mróz
-Michał Binda
-It was a final project of university corse.
+-   Mikołaj Mróz
+-   Michał Binda
+-   Wojciech Michaluk
+
+It was a final project of university course.
+
 
   
 
