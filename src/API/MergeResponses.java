@@ -17,7 +17,7 @@ public class MergeResponses {
         List<JSONObject> responses = new ArrayList<>();
 
         // Define the file names
-        List<String> fileNames = Arrays.asList("solana.json", "ethereum.json", "bitcoin.json", "tether.json");
+        List<String> fileNames = Arrays.asList("./src/API/solana.json", "./src/API/ethereum.json", "./src/API/bitcoin.json", "./src/API/tether.json");
 
         for (String fileName : fileNames) {
             try {
@@ -42,7 +42,7 @@ public class MergeResponses {
         finalResponse.put("data", finalData);
 
         // Write the object to a file
-        try (FileWriter file = new FileWriter("final_response.json")) {
+        try (FileWriter file = new FileWriter("./src/API/final_response.json")) {
             file.write(finalResponse.toString());
             System.out.println("Successfully saved final JSON object to file");
         } catch (IOException e) {

@@ -35,7 +35,7 @@ public class CoinCap_API_present_JSON_saving_list_correct {
                 }
 
                 // Write the object to a file
-                try (FileWriter file = new FileWriter("API/" + assetName + ".json")) {
+                try (FileWriter file = new FileWriter("./src/API/" + assetName + ".json")) {
                     file.write(data.toString());
                     System.out.println("Successfully saved " + assetName + " JSON objects to file");
                 } catch (IOException e) {
